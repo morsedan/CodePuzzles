@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C052F072247C2686007FE577 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C052F071247C2686007FE577 /* main.swift */; };
+		C052F072247C2686007FE577 /* SockMerchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C052F071247C2686007FE577 /* SockMerchant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		C052F06E247C2686007FE577 /* SockPairs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SockPairs; sourceTree = BUILT_PRODUCTS_DIR; };
-		C052F071247C2686007FE577 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C052F071247C2686007FE577 /* SockMerchant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SockMerchant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 		C052F070247C2686007FE577 /* SockPairs */ = {
 			isa = PBXGroup;
 			children = (
-				C052F071247C2686007FE577 /* main.swift */,
+				C052F071247C2686007FE577 /* SockMerchant.swift */,
 			);
 			path = SockPairs;
 			sourceTree = "<group>";
@@ -120,7 +120,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C052F072247C2686007FE577 /* main.swift in Sources */,
+				C052F072247C2686007FE577 /* SockMerchant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
