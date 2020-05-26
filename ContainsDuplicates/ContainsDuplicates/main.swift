@@ -8,5 +8,18 @@
 
 import Foundation
 
-print("Hello, World!")
+class Solution {
+    func containsDuplicate(_ nums: [Int]) -> Bool {
+//        return Set(nums).count < nums.count
+        var checked: Set<Int> = []
+        for number in nums {
+            if checked.contains(number) {
+                return true
+            } else {
+                checked.insert(number)
+            }
+        }
+        return false
+    }
+}
 
