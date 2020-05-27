@@ -53,7 +53,17 @@ class Solution {
         return[0]
     }
  */
-    
+    func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+        var numDict: [Int: Int] = [:]
+        for index in 0..<nums.count {
+            if let compliment = numDict[target - nums[index]] {
+                return [compliment, index]
+            } else {
+                numDict[nums[index]] = index
+            }
+        }
+        return[0]
+    }
 }
 
 var nums = [2, 7, 11, 15]
