@@ -76,6 +76,9 @@ public class ListNode {
 //}
 
 class Solution {
+    
+    var shouldCarry = false
+    
     func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
         guard let list1 = l1 else { return l2 }
         guard let list2 = l2 else { return l1 }
@@ -83,52 +86,111 @@ class Solution {
         var reversed1 = self.reverse(node: list1).head
         var reversed2 = self.reverse(node: list2).head
         
-        printList(head: reversed1)
-        printList(head: reversed2)
+//        printList(head: reversed1)
+//        printList(head: reversed2)
         
         var addedList: ListNode? = nil
-        let addedHead: ListNode = ListNode(0)
+        let addedHead: ListNode = ListNode(20)
         
-        var shouldCarry = false
-//        print(reversed1.next?.val, reversed2.next?.val)
         while reversed1.next != nil && reversed2.next != nil {
             printList(head: addedHead)
             
             var total = reversed1.val + reversed2.val
             if shouldCarry {
                 total += 1
+                shouldCarry = false
             }
             if total >= 10 {
                 shouldCarry = true
                 total = total % 10
             }
-            if addedHead.val == 0 {
-                startedList.next = ListNode(total)
-                addedList = startedList
-            } else {
+            print("total", total)
+            if addedHead.val == 20 {
                 addedHead.val = total
                 addedList = addedHead
+//                if shouldCarry {
+//                    let temp = ListNode(addedHead.val)
+////                    addedHead.val = 1
+//                    addedList?.val = 1
+//                    addedList?.next = temp
+//                    addedList = addedList?.next
+//                    shouldCarry = false
+//                }
+            } else {
+                addedList?.next = ListNode(total)
+                addedList = addedList?.next
             }
-            print(addedHead.val)
             reversed1 = reversed1.next!
             reversed2 = reversed2.next!
         }
-        if reversed1.next == nil {
-            while reversed2.next != nil {
-                addedList?.next = reversed2.next
-                print(reversed2.next?.val)
-                reversed2 = reversed2.next!
-            }
+        
+        var newTotal = reversed1.val + reversed2.val
+        print("newTotal:", newTotal)
+        if newTotal >= 10 {
+            shouldCarry = true
+            newTotal = newTotal % 10
         }
-        if reversed2.next == nil {
-            while reversed1.next != nil {
-                addedList?.next = reversed1.next
-                print(reversed1.next?.val)
-                reversed1 = reversed1.next!
+        
+        if addedHead.val == 20 {
+            addedHead.val = newTotal
+            if reversed1.next == nil {
+                if let temp = reversed2.next {
+                    reversed2 = temp
+                    newTotal = reversed2.val
+                }
+            }
+            if reversed2.next == nil {
+                if let temp = reversed1.next {
+                    reversed1 = temp
+                    newTotal = reversed1.val
+                }
             }
         }
         
+        
+        if reversed1.next == nil {
+            addedList?.next = ListNode(newTotal)
+            addedList = addedList?.next
+            while reversed2.next != nil {
+                if shouldCarry {
+                    reversed2.next?.val += 1
+                    shouldCarry = false
+                }
+                addedList?.next = reversed2.next
+//                print("r1 is nil", reversed2.next?.val)
+                reversed2 = reversed2.next!
+            }
+            if shouldCarry {
+                reversed2.next?.val += 1
+                shouldCarry = false
+            }
+            addedList?.next = reversed2
+        }
+        if reversed2.next == nil {
+//            print("adding", reversed1.val + reversed2.val)
+            addedList?.next = ListNode(newTotal)
+            addedList = addedList?.next
+            while reversed1.next != nil {
+                if shouldCarry {
+                    reversed1.next?.val += 1
+                    shouldCarry = false
+                }
+                addedList?.next = reversed1.next
+//                print("r2 is nil", reversed1.next?.val)
+                reversed1 = reversed1.next!
+            }
+            if shouldCarry {
+                reversed1.next?.val += 1
+                shouldCarry = false
+            }
+            addedList?.next = reversed1
+        }
+        
         return reverse(node: addedHead).head
+    }
+    
+    func addNodes(_ node1: ListNode, and node2: ListNode) -> Int {
+        return node1.val + node2.val
     }
     
     func reverse(node: ListNode) -> (node: ListNode, head: ListNode) {
@@ -138,14 +200,11 @@ class Solution {
         let pair = reverse(node: node.next!)
         let next = pair.node
         let actualHead = pair.head
+        
         node.next = next.next
         next.next = node
         node.next = nil
-//        var current = next
-//        while current.next != nil {
-//            print("HERE", current.val, current.next!.val)
-//            current = current.next!
-//        }
+
         return (node: node, head: actualHead)
     }
 }
@@ -178,11 +237,13 @@ c.next = d
 //}
 //print(new.val)
 
-let e = ListNode(1)
+let e = ListNode(7)
 let f = ListNode(1)
 e.next = f
-let g = ListNode(2)
+let g = ListNode(6)
 f.next = g
+//let h = ListNode(3)
+//g.next = h
 //
 //new = s.reverse(node: e).head
 //
@@ -194,11 +255,11 @@ f.next = g
 
 var answer = s.addTwoNumbers(a, e)!
 print("Answer vvv")
-while answer.next != nil {
-    print(answer.val)
-    answer = answer.next!
-}
-print(answer.val)
+printList(head: answer)
+let t = Solution()
+answer = t.addTwoNumbers(e, ListNode(1))!
+print("Answer2 vvv")
+printList(head: answer)
 
 let numA = 1000000000000000000000000000001.0
 let numB = 564
@@ -212,4 +273,4 @@ let numB = 564
 ////    print(Int(number) + 1)
 //}
 
-let numC = 708000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0
+//let numC: u_long = 708000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
