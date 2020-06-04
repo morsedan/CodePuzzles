@@ -20,7 +20,7 @@ class MinStack {
     func push(_ x: Int) {
 //        push x onto the storage stack
         storage.append(x)
-        if mins == [] || x <= mins[mins.count - 1] {
+        if mins.count == 0/* == []*/ || x <= mins[mins.count - 1] {
             mins.append(x)
         }
     }
@@ -39,6 +39,7 @@ class MinStack {
     }
     
     func getMin() -> Int {
+        
         return mins[mins.count - 1]
     }
 }

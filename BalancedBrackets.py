@@ -33,4 +33,4 @@ case4 = "I (wa)n{t to buy a on}esie[…] b(u{[t] kno}w it) won’t suit me."
 # ({[({[, )}]]})
 
 case7 = "He ran| |out of money, so he {| had} to stop playing | poker."
-print(balancedBrackets(case7))
+print(balancedBrackets(case4))
