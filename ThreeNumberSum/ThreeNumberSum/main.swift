@@ -9,10 +9,10 @@
 import Foundation
 
 func threeNumberSum(arr: [Int], target: Int) -> [[Int]] {
-    var sortedNumbers = arr.sorted()
-
+    let sortedNumbers = arr.sorted()
     var abreviatedNumbers: [Int] = sortedNumbers
     var results: [[Int]] = []
+    
     for index in 0..<sortedNumbers.count-2 {
         var isPossibility = false
         print(abreviatedNumbers, sortedNumbers)
@@ -25,9 +25,7 @@ func threeNumberSum(arr: [Int], target: Int) -> [[Int]] {
     }
     abreviatedNumbers.reverse()
 
-
     for i1 in 0..<abreviatedNumbers.count {
-
         for i2 in i1+1..<abreviatedNumbers.count {
             for i3 in i2+1..<abreviatedNumbers.count {
                 if abreviatedNumbers[i1] + abreviatedNumbers[i2] + abreviatedNumbers [i3] == target {
