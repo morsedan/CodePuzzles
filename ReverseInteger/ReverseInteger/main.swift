@@ -6,7 +6,7 @@
 //  Copyright © 2020 morse. All rights reserved.
 //
 
-import Foundation
+import Darwin
 
 class Solution {
     func reverse(_ x: Int) -> Int {
@@ -29,9 +29,7 @@ class Solution {
             reversedX *= -1
         }
         
-        print(reversedX, reversedX > (2 ^ 31 - 1))
-        print(2 ^ 31 - 1)
-        if reversedX > Int((pow(2, 31) - 1)) || reversedX < (-2 ^ 31) {
+        if reversedX > 2147483647 || reversedX < -2147483648 {
             return 0
         }
         
