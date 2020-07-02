@@ -15,7 +15,6 @@ import Foundation
  */
 
 func makeProducts(_ numbers: [Int]) -> [Int] {
-//    let copyOfNumbers = numbers
     var products: [Int] = []
     
     for i in 0..<numbers.count {
