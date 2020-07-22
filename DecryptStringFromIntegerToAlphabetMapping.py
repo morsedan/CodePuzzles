@@ -7,6 +7,8 @@
 
 class Solution:
     def freqAlphabets(self, s: str) -> str:
+        if s == '':
+            return s
         new_string = ''
         sub_strings = s.split("#")
         lastLetterGreaterThanI = True if s[-1] == "#" else False
@@ -14,19 +16,28 @@ class Solution:
         # print(lastLetterGreaterThanI)
 
         for i in range(len(sub_strings)):
+            end = sub_strings[i][-2:]
+            # print(end)
+
+
+
             if sub_strings[i] == '':
                 continue
-            elif len(sub_strings[i]) == 2 and lastLetterGreaterThanI:
+            elif len(sub_strings[i]) == 2 and i != len(sub_strings) - 1:
                 new_string += self.num_to_letter(sub_strings[i])
             elif len(sub_strings[i]) == 1:
-                new_string =+ self.num_to_letter()
+                new_string += self.num_to_letter(sub_strings[i])
             else:
-                # handle longer series of letters here
-                # new_string += "hi"
                 for number in sub_strings[i][:-2]:
                     new_string += self.num_to_letter(number)
                 if i == len(sub_strings) - 1 and lastLetterGreaterThanI:
                     new_string += self.num_to_letter(sub_strings[i][-2:])
+                elif lastLetterGreaterThanI or i != len(sub_strings) - 1:
+                    new_string += self.num_to_letter(end)
+                else:
+                    for number in end:
+                        new_string += self.num_to_letter(number)
+
         return new_string
 
     
@@ -41,8 +52,16 @@ s = Solution()
 
 test1 = "10#11#12"  # "jkab"
 test2 = "1326#"  # "acz"
-test3 = "25#"  # y
+test3 = "25#"  # "y"
 test4 = "12345678910#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#"  # "abcdefghijklmnopqrstuvwxyz"
 test5 = ""  # ""
+test6 = "4"  # "d"
+test7 = "26#11#418#5"  # "zkdre"
 
+print(s.freqAlphabets(test1))
+print(s.freqAlphabets(test2))
+print(s.freqAlphabets(test3))
 print(s.freqAlphabets(test4))
+print(s.freqAlphabets(test5))
+print(s.freqAlphabets(test6))
+print(s.freqAlphabets(test7))
