@@ -61,6 +61,23 @@ class Solution {
     }
 }
 
+/*
+ Python Solution:
+ 
+ def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
+     res, dic = [], {}
+     for idx, group in enumerate(groupSizes):
+         if group not in dic:
+             dic[group] = [idx]
+         else:
+             dic[group].append(idx)
+         
+         if len(dic[group]) == group:
+             res.append(dic[group])
+             del dic[group]
+     return res
+ */
+
 let s = Solution()
 
 let input1 = [3,3,3,3,3,1,3] // [5],[0,1,2],[3,4,6]]
