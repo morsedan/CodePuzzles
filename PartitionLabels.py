@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/partition-labels/submissions/
+
 class Solution:
     def partitionLabels(self, S: str) -> [int]:
         if len(S) == 0:
