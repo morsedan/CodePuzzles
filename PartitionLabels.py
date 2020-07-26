@@ -16,31 +16,49 @@ class Solution:
             else:
                 lettersDictionary[letter].append(i)
 
-        # currentPartitionHighestIndex = max(lettersDictionary[S[0]])
         currentPartitionLowestIndex = 0
         while True:
-
             currentPartitionHighestIndex = max(lettersDictionary[S[currentPartitionLowestIndex]])
             finishedLetters.add(currentPartitionLowestIndex)
             currentPartition = S[currentPartitionLowestIndex:currentPartitionHighestIndex]
+            lowestIndexToCheck = currentPartitionLowestIndex
 
             # "ababcbaca"
-            # while True:
-            for letter in currentPartition:
-                if max(lettersDictionary[letter]) > currentPartitionHighestIndex and letter not in finishedLetters:
-                    # currentPartition.a
-                    currentPartitionHighestIndex = max(lettersDictionary[letter])
+            while True:
+                expanded = False
+                for letter in currentPartition:  # for letter in currentPartition[lowestIndexToCheck:currentPartitionHighestIndex]:
+                    if max(lettersDictionary[letter]) > currentPartitionHighestIndex and letter not in finishedLetters:
 
-                finishedLetters.add(letter)
+                        currentPartitionHighestIndex = max(lettersDictionary[letter])
+                        expanded = True
+
+                    currentPartition = S[currentPartitionLowestIndex:currentPartitionHighestIndex]
+                    # lowestIndexToCheck = currentPartitionHighestIndex
+                    finishedLetters.add(letter)
+
+                if not expanded:
+                    break
 
             partitions.append(S[currentPartitionLowestIndex:currentPartitionHighestIndex + 1])
-                # if WHAT?:
-                #     break
 
             if currentPartitionHighestIndex == len(S) - 1:
                 break
             currentPartitionLowestIndex = currentPartitionHighestIndex + 1
         return [len(partition) for partition in partitions]
+
+
+class TheSolution(object):
+    def partitionLabels(self, S):
+        last = {c: i for i, c in enumerate(S)}
+        j = anchor = 0
+        ans = []
+        for i, c in enumerate(S):
+            j = max(j, last[c])
+            if i == j:
+                ans.append(i - anchor + 1)
+                anchor = i + 1
+            
+        return ans
 
 
 
