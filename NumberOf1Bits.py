@@ -1,5 +1,6 @@
 class Solution:
     def hammingWeight(self, n: int) -> int:
+        # return bin(n).count('1') # super fast solution
         one_bits = 0
         largest_possible = 2
         for i in range(1, n.bit_length()):
@@ -15,5 +16,5 @@ class Solution:
 
 s = Solution()
 
-number = 16
+number = 11
 print(s.hammingWeight(number))
