@@ -11,19 +11,27 @@ class Solution:
             return -1
 
         connectionDict = {}
-        for i in range(n):
+        nodes = set(range(n))
+        nodeCollections = []
+        # print("nodes", nodes)
+
+        for i in nodes:
             connectionDict[i] = []
         for connection in connections:
             connectionDict[connection[0]].append(connection[1])
             connectionDict[connection[1]].append(connection[0])
         largestNetwork = 0
-        for connection in connectionDict:
+
+
+
+        while len(nodes) > 0:
+            currentNode = nodes.pop()
             visited = set()
             stack = deque()
             path = set()
-            stack.append(connection)
-            path.add(connection)
-            
+            stack.append(currentNode)
+            path.add(currentNode)
+
             while len(stack) > 0:
                 node = stack.pop()
                 if node not in visited:
@@ -34,8 +42,36 @@ class Solution:
                             path.add(item)
             if len(path) > largestNetwork:
                 largestNetwork = len(path)
-            print(connection, path, len(path))
-        print(connectionDict)
+            nodeCollections.append(list(path))
+            # print(nodeCollections)
+            nodes = nodes.difference(path)
+            # print(connection, path, len(path))
+        return len(nodeCollections) - 1
+
+
+
+        for connection in connectionDict:
+            visited = set()
+            stack = deque()
+            path = set()
+            stack.append(connection)
+            path.add(connection)
+
+            while len(stack) > 0:
+                node = stack.pop()
+                if node not in visited:
+                    visited.add(node)
+                    for item in connectionDict[node]:
+                        stack.append(item)
+                        if item not in path:
+                            path.add(item)
+            if len(path) > largestNetwork:
+                largestNetwork = len(path)
+            nodeCollections.append(list(path))
+            # print(nodeCollections)
+            nodes = nodes.difference(path)
+            # print(connection, path, len(path))
+        # print(connectionDict)
         return n - largestNetwork
         #
         #
@@ -48,24 +84,24 @@ class Solution:
 s = Solution()
 n = 4
 connections = [[0,1],[0,2],[1,2]]
-print(s.makeConnected(n, connections))  # 1
+print(n, s.makeConnected(n, connections))  # 1
 
 n = 6
 connections = [[0,1],[0,2],[0,3],[1,2],[1,3]]
-print(s.makeConnected(n, connections))  # 2
+print(n, s.makeConnected(n, connections))  # 2
 
 n = 6
 connections = [[0,1],[0,2],[0,3],[1,2]]
-print(s.makeConnected(n, connections))  # -1
+print(n, s.makeConnected(n, connections))  # -1
 
 n = 5
 connections = [[0,1],[0,2],[3,4],[2,3]]
-print(s.makeConnected(n, connections))  # 0
+print(n, s.makeConnected(n, connections))  # 0
 
 n = 11
 connections = [[1,4],[0,3],[1,3],[3,7],[2,7],[0,1],[2,4],
                [3,6],[5,6],[6,7],[4,7],[0,7],[5,7]]
-print(s.makeConnected(n, connections))
+print(n, s.makeConnected(n, connections))  # 3
 
 n = 100
 connections = [[17,51],[33,83],[53,62],[25,34],[35,90],
@@ -93,4 +129,4 @@ connections = [[17,51],[33,83],[53,62],[25,34],[35,90],
                [33,57],[3,65],[63,84],[77,94],[26,90],
                [64,77],[0,3],[27,97],[66,89],[18,77],
                [27,43]]
-print(s.makeConnected(n, connections))
+print(n, s.makeConnected(n, connections))  # 13?
