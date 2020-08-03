@@ -10,7 +10,7 @@ class Solution:
         answers zero
         as is any color where the instances of that answer are
         more than the answer
-        so the number of answers / answer is the number of times
+        so the (number of answers / answer) is the number of times
         to add that answer ({10:24}->24/10=2.4, 10*3
         zero is still an exception because you can't divide 0
         so for zero just add the number of answers
@@ -46,22 +46,25 @@ class Solution:
 s = Solution()
 
 answers = [10, 10, 10]  # 11
-print(s.numRabbits(answers))
+print(11, s.numRabbits(answers))
 
 answers = [1, 1, 2]  # 5
-print(s.numRabbits(answers))
+print(5, s.numRabbits(answers))
 
 answers = [1, 1, 0, 0, 5]  # 10
-print(s.numRabbits(answers))
+print(10, s.numRabbits(answers))
 
 answers = [1, 1, 0, 0, 5, 1]  # 12
-print(s.numRabbits(answers))
+print(12, s.numRabbits(answers))
+
+answers = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]  # 11
+print(11, s.numRabbits(answers))
 
 answers = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]  # 22
-print(s.numRabbits(answers))
+print(22, s.numRabbits(answers))
 
 answers = [0, 0]  # 2
-print(s.numRabbits(answers))
+print(2, s.numRabbits(answers))
 
 answers = []  # 0
-print(s.numRabbits(answers))
+print(0, s.numRabbits(answers))
