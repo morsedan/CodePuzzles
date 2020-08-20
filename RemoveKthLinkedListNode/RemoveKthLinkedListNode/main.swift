@@ -125,5 +125,6 @@ l.insertNode(nodeData: 5)
 l.insertNode(nodeData: 6)
 
 printList(l)
-let j = removeKthLinkedListNode(head: l.head, k: 6)
-print(j!.data)
+let j = removeKthLinkedListNode(head: l.head, k: 5
+)
+printList(l)

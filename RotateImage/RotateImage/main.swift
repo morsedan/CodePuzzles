@@ -26,15 +26,6 @@ let array = [[1,2,3,4],
 for item in rotateImage(a: array) {
     print(item)
 }
-var arr1 = array
-var arr2 = array
-swap(&arr1[0][0], &arr2[2][2])
-print(arr1[0][0])
-print(arr1)
-var a = 1
-var b = 2
-swap(&a, &b)
-print(a, b)
 
 """
 x is inner arrays
