@@ -22,7 +22,7 @@ class Solution {
         
         print(subStrings)
         for subString in subStrings {
-//            print(subString.count)
+            //            print(subString.count)
             let secondLastIndex = subString.index(subString.lastIndex(of: subString.last!)!, offsetBy: 1)
             let lastIndex = subString.lastIndex(of: subString.last!)!
             print(String(subString[lastIndex]))
@@ -72,8 +72,34 @@ let test3 = "25#" // y
 let test4 = "12345678910#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#" // "abcdefghijklmnopqrstuvwxyz"
 let test5 = "" // ""
 
-print(s.freqAlphabets(test1))
-print(s.freqAlphabets(test2))
-print(s.freqAlphabets(test3))
-print(s.freqAlphabets(test4))
-print(s.freqAlphabets(test5))
+//print(s.freqAlphabets(test1))
+//print(s.freqAlphabets(test2))
+//print(s.freqAlphabets(test3))
+//print(s.freqAlphabets(test4))
+//print(s.freqAlphabets(test5))
+var i = 20
+while i > 0 {
+    i /= 2
+    print(i)
+}
+print("s")
+
+extension Array {
+    func getNs(num: Int) -> Int {
+        var count = 0
+        for number in arr {
+            var mutableNumber = number
+            while mutableNumber > 0 {
+                if mutableNumber % 10 == num {
+                    count += 1
+                }
+                mutableNumber /= 10
+            }
+        }
+        return count
+    }
+}
+
+
+let arr = [22, 34, 55, 515, 5555]
+print(arr.getNs(num: 5))

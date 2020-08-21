@@ -23,22 +23,13 @@ math div gives divisor and remainder
 '''
 from math import sqrt
 
-cache = {}
-
 def list_squared(first, last):
     result = []
     for num in range(first, last + 1):
-        if num in cache:
-            result.append(cache[num])
-            print("In the cache!!!")
-            continue
         divisor_squares = get_divisors_squares(num)
         div_sum = sum(divisor_squares)
         if check_if_square(div_sum):
-            cache[num] = [num, div_sum]
             result.append([num, div_sum])
-        else:
-            cache[num] = None
 
     return result
 
@@ -55,7 +46,7 @@ def get_divisors_squares(number):
 def check_if_square(number):
     return sqrt(number) // 1 == sqrt(number)
 
-# print(list_squared(1, 10000))
+print(list_squared(1, 1000))
 # print(list_squared(1, 10000))
 # print(list_squared(1, 10000))
 # print(list_squared(1, 10000))
