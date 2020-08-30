@@ -9,14 +9,12 @@ def stringsRearrangement(words):
 
 def dif_by_one(word1, word2):
     dif_count = 0
-    for i in len(word1):
-        if word1[i] != word2[i]
+    for i in range(len(word1)):
+        if word1[i] != word2[i]:
             dif_count += 1
         if dif_count > 1:
             return False
     return dif_count == 1
-
-    return False
 
 
 
