@@ -8,5 +8,17 @@
 
 import Foundation
 
-print("Hello, World!")
+/*
+ increment layer by the formula
+ add 2, 4, 6, 8, etc
+ */
 
+func rowSumOddNumbers(_ row: Int) -> Int {
+    return row * row * row
+}
+
+
+
+print(rowSumOddNumbers(1)) // 1
+print(rowSumOddNumbers(2)) // 8
+print(rowSumOddNumbers(3)) // 27
