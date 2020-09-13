@@ -8,5 +8,14 @@
 
 import Foundation
 
-print("Hello, World!")
+func solution(_ num: Int) -> Int {
+    if num < 3 { return 0 }
+    return (3..<num).reduce(0) {
+        return $1 % 3 == 0 || $1 % 5 == 0 ? $0 + $1 : $0
+    }
+}
 
+assert(solution(10) == 23)
+assert(solution(20) == 78)
+assert(solution(200) == 9168)
+print("passed")
