@@ -23,4 +23,5 @@ func basicTests() {
     assert(checkForFactor(2453, 5) == false)
     assert(checkForFactor(24617, 3) == false)
 }
+basicTests()
 print("passed!")
