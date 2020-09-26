@@ -22,42 +22,49 @@ struct Context {
 }
 
 func moveNode(source:Node?, dest:Node?) throws -> Context? {
-    
+    if source == nil || dest == nil {
+        throw NSError(domain: "domain", code: 1, userInfo: nil)
+    }
+    let second = source?.next
+    let head = source
+    head?.next = dest
+    return Context(source: second, dest: head)
 }
 
-class SolutionTest: XCTestCase {
-    static var allTests = [
-        ("testMoveNode", testMoveNode),
-        ("testMoveNodeWithNilSource", testMoveNodeWithNilSource),
-        ("testMoveNodeWithNilDest", testMoveNodeWithNilDest),
-        ("testMoveNodeWithSourceAndDestNil", testMoveNodeWithSourceAndDestNil),
-    ]
+func printList(head: Node) {
+    var current: Node? = head
+    while current != nil {
+        print(current!.data)
+        current = current?.next
+    }
+}
 
-    func testMoveNode() {
-        let source:Node? = buildOneTwoThree()
-        let dest:Node? = buildListFromArray([4, 5, 6])
-        let context:Context? = try! moveNode(source: source, dest: dest)
-        XCTAssertTrue(linkedListsEqual(first: context?.source, second: buildListFromArray([2, 3])))
-        XCTAssertTrue(linkedListsEqual(first: context?.dest, second: buildListFromArray([1, 4, 5, 6])))
-    }
-    
-    func testMoveNodeWithNilSource() {
-        let source:Node? = nil
-        let dest:Node? = buildListFromArray([4, 5, 6])
-        XCTAssertThrowsError(try moveNode(source: source, dest: dest))
-    }
-    
-    func testMoveNodeWithNilDest() {
-        let source:Node? = buildOneTwoThree()
-        let dest:Node? = nil
-        let context:Context? = try! moveNode(source: source, dest: dest)
-        XCTAssertTrue(linkedListsEqual(first: context?.source, second: buildListFromArray([2, 3])))
-        XCTAssertTrue(linkedListsEqual(first: context?.dest, second: buildListFromArray([1])))
-    }
-    
-    func testMoveNodeWithSourceAndDestNil() {
-        let source:Node? = nil
-        let dest:Node? = nil
-        XCTAssertThrowsError(try moveNode(source: source, dest: dest))
-    }
+let node1 = Node(1)
+let node2 = Node(2)
+let node3 = Node(3)
+let node4 = Node(4)
+let node5 = Node(5)
+let node6 = Node(6)
+
+node1.next = node2
+node2.next = node3
+node4.next = node5
+node5.next = node6
+
+printList(head: node1)
+printList(head: node4)
+
+var source = node1
+var dest = node4
+
+let newContext = try? moveNode(source: source, dest: dest)
+print("source")
+printList(head: (newContext?.source!)!)
+print("dest")
+printList(head: (newContext?.dest!)!)
+
+do {
+    try print(moveNode(source: nil, dest: nil))
+} catch {
+    print(error)
 }
