@@ -9,23 +9,31 @@
 import Foundation
 
 func duplicateEncode(_ word: String) -> String {
-    var result = ""
     var visited: [Character: Int] = [:]
     
+    
+    
     for letter in word.lowercased() {
-        if visited.keys.contains(letter) {
-            visited[letter]! += 1
-        } else {
-            visited[letter] = 1
-        }
+//        New way I discovered on codewars:
+        visited[letter, default: 0] += 1
+//        My old way:
+//        if visited.keys.contains(letter) {
+//            visited[letter]! += 1
+//        } else {
+//            visited[letter] = 1
+//        }
     }
-    for letter in word.lowercased() {
-        if visited[letter]! > 1 {
-            result.append(")")
-        } else {
-            result.append("(")
-        }
-    }
+//    functional way:
+    let result = word.lowercased().map { letter in visited[letter]! > 1 ? ")" : "(" }.joined()
+//    long way:
+//    var result = ""
+//    for letter in word.lowercased() {
+//        if visited[letter]! > 1 {
+//            result.append(")")
+//        } else {
+//            result.append("(")
+//        }
+//    }
     return result
 }
 
