@@ -9,13 +9,12 @@
 import Foundation
 
 func accum(_ s: String) -> String {
-    var result = ""
-//    My refactored solution:
-    s.enumerated().map { index, character in
-        result.append(String((0...index).map { _ in character }).capitalized)
-        result.append(s.count - 1 > index ? "-" : "")
-    }
+    
+//    "Best Practices/Clever" solution
+    return s.enumerated().map { index, character in
+        repeatElement(String(character), count: index + 1).joined().capitalized }.joined(separator: "-")
 //      My original solution:
+//    var result = ""
 //    for (index, letter) in s.enumerated() {
 //        result.append(letter.uppercased())
 //        for _ in 0..<index {
@@ -25,7 +24,12 @@ func accum(_ s: String) -> String {
 //            result.append("-")
 //        }
 //    }
-    return result
+    //    My refactored solution (needs result from above solution):
+//    s.enumerated().map { index, character in
+//        result.append(String((0...index).map { _ in character }).capitalized)
+//        result.append(s.count - 1 > index ? "-" : "")
+//    }
+//    return result
 }
 
 func testAccum() {
