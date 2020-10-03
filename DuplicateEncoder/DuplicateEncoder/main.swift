@@ -8,5 +8,32 @@
 
 import Foundation
 
-print("Hello, World!")
+func duplicateEncode(_ word: String) -> String {
+    var result = ""
+    var visited: [Character: Int] = [:]
+    
+    for letter in word.lowercased() {
+        if visited.keys.contains(letter) {
+            visited[letter]! += 1
+        } else {
+            visited[letter] = 1
+        }
+    }
+    for letter in word.lowercased() {
+        if visited[letter]! > 1 {
+            result.append(")")
+        } else {
+            result.append("(")
+        }
+    }
+    return result
+}
 
+func testBasics() {
+    assert(duplicateEncode("din") == "(((")
+    assert(duplicateEncode("recede") == "()()()")
+    assert(duplicateEncode("Success") == ")())())", "should ignore case")
+    assert(duplicateEncode("(( @") == "))((")
+}
+testBasics()
+print("passed!")
