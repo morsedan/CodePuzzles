@@ -10,16 +10,21 @@ import Foundation
 
 func accum(_ s: String) -> String {
     var result = ""
-    
-    for (index, letter) in s.enumerated() {
-        result.append(letter.uppercased())
-        for _ in 0..<index {
-            result.append(letter.lowercased())
-        }
-        if s.count - 1 > index {
-            result.append("-")
-        }
+//    My refactored solution:
+    s.enumerated().map { index, character in
+        result.append(String((0...index).map { _ in character }).capitalized)
+        result.append(s.count - 1 > index ? "-" : "")
     }
+//      My original solution:
+//    for (index, letter) in s.enumerated() {
+//        result.append(letter.uppercased())
+//        for _ in 0..<index {
+//            result.append(letter.lowercased())
+//        }
+//        if s.count - 1 > index {
+//            result.append("-")
+//        }
+//    }
     return result
 }
 
