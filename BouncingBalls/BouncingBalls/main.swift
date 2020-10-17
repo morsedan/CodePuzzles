@@ -12,22 +12,29 @@ func bouncingBall(_ h: Double, _ bounce: Double, _ window: Double) -> Int {
     var sightings = 0
     var newHeight = h
     
-    if h <= 0 || bounce <= 0 || bounce >= 1 || window >= h {
+//    if h <= 0 || bounce <= 0 || bounce >= 1 || window >= h {
+//        return -1
+//    }
+    guard h > 0 && bounce > 0 && bounce < 1 && window < h else {
         return -1
     }
     
-    while newHeight * bounce > window {
+    newHeight *= bounce
+    while newHeight > window {
         sightings += 2
         newHeight *= bounce
     }
     sightings += 1
+    /*
+     O([nearly]n) where n is height.
+     */
     
     return sightings
 }
 
 func testequal(_ h: Double, _ bounce: Double, _ window: Double, _ expected: Int) {
     assert(bouncingBall(h, bounce, window) == expected)
-    print("pass")
+    print("pass", expected)
 }
 
 func testExample() {
