@@ -46,19 +46,30 @@ class Node {
     }
 }
 
+//func recursiveReverse(list: Node?) -> Node? {
+//    if list == nil {
+//        return list
+//    }
+//    if list?.next == nil {
+//        return list
+//    }
+//    let head = list
+//    let new = recursiveReverse(list: head?.next)
+//    head!.next!.next = head
+//    head?.next = nil
+//    
+//    return new
+//}
+
 func recursiveReverse(list: Node?) -> Node? {
-    if list == nil {
-        return list
-    }
-    if list?.next == nil {
-        return list
-    }
-    let head = list
-    let new = recursiveReverse(list: head?.next)
-    head!.next!.next = head
-    head?.next = nil
-    
-    return new
+  guard let list = list else { return nil }
+  guard let next = list.next else { return list }
+
+  list.next = nil // Unlink to prevent cycles
+  let reversed = recursiveReverse(list: next)
+  next.next = list // Re-attach
+
+  return reversed
 }
 
 func testRecursiveReverseEmptyList() {
