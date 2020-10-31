@@ -19,6 +19,7 @@ func bouncingBall(_ h: Double, _ bounce: Double, _ window: Double) -> Int {
         return -1
     }
     
+
     return Int(ceil(log(window / h) / log(bounce))) * 2 - 1
 //
 //    newHeight *= bounce
@@ -29,11 +30,26 @@ func bouncingBall(_ h: Double, _ bounce: Double, _ window: Double) -> Int {
 //    sightings += 1
 //
 //    return sightings
+
+  /*
+    newHeight *= bounce
+    while newHeight > window {
+        sightings += 2
+        newHeight *= bounce
+    }
+    sightings += 1
+    /*
+     O([nearly]n) where n is height.
+     */
+    
+    return sightings
+
+  */
 }
 
 func testequal(_ h: Double, _ bounce: Double, _ window: Double, _ expected: Int) {
     assert(bouncingBall(h, bounce, window) == expected)
-    print("pass")
+    print("pass", expected)
 }
 
 func testExample() {
