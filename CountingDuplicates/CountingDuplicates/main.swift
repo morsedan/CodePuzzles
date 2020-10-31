@@ -9,10 +9,10 @@
 import Foundation
 
 func countDuplicates(_ s:String) -> Int {
-    let s = s.lowercased()
-    var numberOfDuplicates = 0
-    var characters = Set<String.Element>()
-    var countedCharacters = Set<String.Element>()
+//    let s = s.lowercased()
+//    var numberOfDuplicates = 0
+//    var characters = Set<String.Element>()
+//    var countedCharacters = Set<String.Element>()
     
 //
 //    for character in s {
@@ -23,16 +23,16 @@ func countDuplicates(_ s:String) -> Int {
 //            characters.insert(character)
 //        }
 //    }
-    s.forEach { character in
-        if characters.contains(character) && !countedCharacters.contains(character) {
-            numberOfDuplicates += 1
-            countedCharacters.insert(character)
-        } else {
-            characters.insert(character)
-        }
-    }
-    
-    return numberOfDuplicates
+//    s.forEach { character in
+//        if characters.contains(character) && !countedCharacters.contains(character) {
+//            numberOfDuplicates += 1
+//            countedCharacters.insert(character)
+//        } else {
+//            characters.insert(character)
+//        }
+//    }
+    return s.lowercased().reduce(into: [:]) { $0[$1, default: 0] += 1 }.filter { $0.1 > 1 }.count
+//    return numberOfDuplicates
 }
 
 let string1 = "aa11"
