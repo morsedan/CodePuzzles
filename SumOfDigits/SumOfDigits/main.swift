@@ -30,6 +30,8 @@ import Foundation
 //
 //    return digitSum
 //}
+
+// Added this recursive solution, solution to come
 func digitalRoot(of number: Int) -> Int {
     var digitSum = 0
     var number = number
