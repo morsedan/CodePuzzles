@@ -51,10 +51,19 @@ func digitalRoot(of number: Int) -> Int {
     
     return digitSum
 }
+// This one was most popular, but the compiler doesn't seem to like it
+//func digitalRootSolution1(of number: Int) -> Int {
+//    let digit = String(number).characters.flatMap { Int(String($0)) }.reduce(0, +)
+//    return digit > 9 ? digitalRoot(of: digit) : digit
+//}
+// This one is amazing.
+func digitalRootSolution2(of number: Int) -> Int {
+    return (number - 1) % 9 + 1
+}
 
-assert(digitalRoot(of: 16) == 7)
-assert(digitalRoot(of: 456) == 6)
-assert(digitalRoot(of: 942) == 6)
-assert(digitalRoot(of: 132189) == 6)
-assert(digitalRoot(of: 493193) == 2)
+assert(digitalRootSolution2(of: 16) == 7)
+assert(digitalRootSolution2(of: 456) == 6)
+assert(digitalRootSolution2(of: 942) == 6)
+assert(digitalRootSolution2(of: 132189) == 6)
+assert(digitalRootSolution2(of: 493193) == 2)
 print("passed!")
