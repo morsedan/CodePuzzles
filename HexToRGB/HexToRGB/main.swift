@@ -25,22 +25,35 @@ struct RGB: CustomStringConvertible, Equatable {
 }
 
 func hexStringToRGB(_ str:String) -> RGB {
-    var colorString = str.lowercased().dropFirst()
+    var start = str.index(after: str.startIndex)
+    var end = str.index(start, offsetBy: 2)
     
-    let redString = String(colorString.prefix(2))
-    let red = Int(redString, radix: 16) ?? 0
-    colorString = colorString.dropFirst().dropFirst()
+    let red = str.substring(with: start..<end)
+    start = end; end = str.index(end, offsetBy: 2)
+    let green = str.substring(with: start..<end)
+    start = end; end = str.index(end, offsetBy: 2)
+    let blue = str.substring(with: start..<end)
     
-    let greenString = String(colorString.prefix(2))
-    let green = Int(greenString, radix: 16) ?? 0
-    colorString = colorString.dropFirst().dropFirst()
-    
-    let blueString = String(colorString.prefix(2))
-    let blue = Int(blueString, radix: 16) ?? 0
-    colorString = colorString.dropFirst().dropFirst()
-    
-    return RGB(red, green, blue)
+    return RGB(Int(red, radix: 16)!, Int(green, radix: 16)!, Int(blue, radix: 16)!)
 }
+
+//func hexStringToRGB(_ str:String) -> RGB {
+//    var colorString = str.lowercased().dropFirst()
+//
+//    let redString = String(colorString.prefix(2))
+//    let red = Int(redString, radix: 16) ?? 0
+//    colorString = colorString.dropFirst().dropFirst()
+//
+//    let greenString = String(colorString.prefix(2))
+//    let green = Int(greenString, radix: 16) ?? 0
+//    colorString = colorString.dropFirst().dropFirst()
+//
+//    let blueString = String(colorString.prefix(2))
+//    let blue = Int(blueString, radix: 16) ?? 0
+//    colorString = colorString.dropFirst().dropFirst()
+//
+//    return RGB(red, green, blue)
+//}
 
 func testHexStringToRGB() {
     assert(hexStringToRGB("#FF9933") == RGB(255, 153, 51))
