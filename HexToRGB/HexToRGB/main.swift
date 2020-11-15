@@ -28,42 +28,18 @@ func hexStringToRGB(_ str:String) -> RGB {
     var colorString = str.lowercased().dropFirst()
     
     let redString = String(colorString.prefix(2))
+    let red = Int(redString, radix: 16) ?? 0
     colorString = colorString.dropFirst().dropFirst()
-    let red = stringToInt(redString)
+    
     let greenString = String(colorString.prefix(2))
+    let green = Int(greenString, radix: 16) ?? 0
     colorString = colorString.dropFirst().dropFirst()
-    let green = stringToInt(greenString)
+    
     let blueString = String(colorString.prefix(2))
+    let blue = Int(blueString, radix: 16) ?? 0
     colorString = colorString.dropFirst().dropFirst()
-    let blue = stringToInt(blueString)
+    
     return RGB(red, green, blue)
-}
-
-func stringToInt(_ hexString: String) -> Int {
-    var numbers: [Int] = []
-    
-    for character in hexString {
-        switch character {
-        case "1": numbers.append(1)
-        case "2": numbers.append(2)
-        case "3": numbers.append(3)
-        case "4": numbers.append(4)
-        case "5": numbers.append(5)
-        case "6": numbers.append(6)
-        case "7": numbers.append(7)
-        case "8": numbers.append(8)
-        case "9": numbers.append(9)
-        case "a": numbers.append(10)
-        case "b": numbers.append(11)
-        case "c": numbers.append(12)
-        case "d": numbers.append(13)
-        case "e": numbers.append(14)
-        case "f": numbers.append(15)
-        default: numbers.append(0)
-        }
-    }
-    
-    return numbers[0] * 16 + numbers[1]
 }
 
 func testHexStringToRGB() {
