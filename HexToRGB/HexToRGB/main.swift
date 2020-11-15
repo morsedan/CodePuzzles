@@ -28,13 +28,13 @@ func hexStringToRGB(_ str:String) -> RGB {
     var start = str.index(after: str.startIndex)
     var end = str.index(start, offsetBy: 2)
     
-    let red = str.substring(with: start..<end)
+    let red = str[start..<end]
     start = end; end = str.index(end, offsetBy: 2)
-    let green = str.substring(with: start..<end)
+    let green = str[start..<end]
     start = end; end = str.index(end, offsetBy: 2)
-    let blue = str.substring(with: start..<end)
+    let blue = str[start..<end]
     
-    return RGB(Int(red, radix: 16)!, Int(green, radix: 16)!, Int(blue, radix: 16)!)
+    return RGB(Int(red, radix: 16) ?? 0, Int(green, radix: 16) ?? 0, Int(blue, radix: 16) ?? 0)
 }
 
 //func hexStringToRGB(_ str:String) -> RGB {
