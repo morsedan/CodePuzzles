@@ -14,7 +14,16 @@ func countDuplicates(_ s:String) -> Int {
     var characters = Set<String.Element>()
     var countedCharacters = Set<String.Element>()
     
-    for character in s {
+//
+//    for character in s {
+//        if characters.contains(character) && !countedCharacters.contains(character) {
+//            numberOfDuplicates += 1
+//            countedCharacters.insert(character)
+//        } else {
+//            characters.insert(character)
+//        }
+//    }
+    s.forEach { character in
         if characters.contains(character) && !countedCharacters.contains(character) {
             numberOfDuplicates += 1
             countedCharacters.insert(character)
