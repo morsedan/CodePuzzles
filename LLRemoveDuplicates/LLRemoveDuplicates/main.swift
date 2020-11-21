@@ -67,7 +67,7 @@ func printList(head: Node?) {
     print(listString)
 }
 
-func removeDuplicates(head:Node?) -> Node? {
+func MYremoveDuplicates(head:Node?) -> Node? {
     if head == nil {
         return nil
     }
@@ -80,6 +80,23 @@ func removeDuplicates(head:Node?) -> Node? {
         current = current?.next
     }
     return head
+}
+
+func removeDuplicates(head: Node?) -> Node? {
+  guard var node = head else { return nil }
+  while let next = node.next {
+    if node.data == next.data {
+      node.next = next.next
+    } else {
+      node = next
+    }
+  }
+  return head
+}
+
+func recursiveRemoveDuplicates(head:Node?) -> Node? {
+    head?.next = recursiveRemoveDuplicates(head: head?.next)
+    return head?.data == head?.next?.data ? head?.next : head
 }
 
 func testRemoveDuplicates() {
