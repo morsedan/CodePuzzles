@@ -8,7 +8,7 @@
 
 import Foundation
 
-func allNonConsecutive (_ arr: [Int]) -> [(Int, Int)] {
+func myAllNonConsecutive (_ arr: [Int]) -> [(Int, Int)] {
     var result: [(Int, Int)] = []
     var previousNumber = arr[0]
     for (index, number) in arr.enumerated() {
@@ -19,6 +19,11 @@ func allNonConsecutive (_ arr: [Int]) -> [(Int, Int)] {
         previousNumber = number
     }
     return result
+}
+
+func allNonConsecutive(_ arr: [Int]) -> [(Int, Int)] {
+    return arr.enumerated().dropFirst()
+        .filter { offset, element in arr[offset - 1] + 1 != element }
 }
 
 func test_allNonConsecutive() {
