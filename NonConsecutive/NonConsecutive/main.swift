@@ -9,7 +9,16 @@
 import Foundation
 
 func allNonConsecutive (_ arr: [Int]) -> [(Int, Int)] {
-  return []
+    var result: [(Int, Int)] = []
+    var previousNumber = arr[0]
+    for (index, number) in arr.enumerated() {
+        if index == 0 { continue }
+        if previousNumber + 1 != number {
+            result.append((index, number))
+        }
+        previousNumber = number
+    }
+    return result
 }
 
 func test_allNonConsecutive() {
