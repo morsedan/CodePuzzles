@@ -38,7 +38,10 @@ func arrayToList(_ numbers: [Int]?) -> Node? {
     return head
 }
 
-func listToArray(_ head: Node?) -> [Int] {
+func listToArray(_ head: Node?) -> [Int]? {
+    if head == nil {
+        return nil
+    }
     var numbers: [Int] = []
     
     var current = head
@@ -65,19 +68,21 @@ func printList(head: Node?) {
 }
 
 func removeDuplicates(head:Node?) -> Node? {
-    var node: Node? = nil
+    if head == nil {
+        return nil
+    }
+    var current = head
     
-    return node
+    while current?.next != nil {
+        while current!.data == current?.next?.data {
+            current?.next = current?.next?.next
+        }
+        current = current?.next
+    }
+    return head
 }
 
 func testRemoveDuplicates() {
-    let a = [1, 1, 1, 2, 3]
-    let b = [1, 2, 3]
-    let aList = arrayToList(a)
-    let noDupAList = removeDuplicates(head: aList)
-    let noDupA = listToArray(noDupAList)
-    assert(noDupA == b)
-    
     let c: [Int]? = nil
     let d: [Int]? = nil
     let cList = arrayToList(c)
@@ -85,20 +90,44 @@ func testRemoveDuplicates() {
     let noDupC = listToArray(noDupCList)
     assert(noDupC == d)
     
-    let e: [Int]? = nil
-    let f: [Int]? = nil
-    let eList = arrayToList(e)
-    let noDupEList = removeDuplicates(head: eList)
-    let noDupE = listToArray(noDupEList)
+    let a = [1, 1, 1, 2, 3]
+    let b = [1, 2, 3]
+    let aList = arrayToList(a)
+    let noDupAList = removeDuplicates(head: aList)
+    let noDupA = listToArray(noDupAList)
+    assert(noDupA == b)
+    
+    
+    
+    var e: [Int]? = nil
+    var f: [Int]? = nil
+    var eList = arrayToList(e)
+    var noDupEList = removeDuplicates(head: eList)
+    var noDupE = listToArray(noDupEList)
     assert(noDupE == f)
-
-    //nil nil
-    //
-    //[1, 2, 3] [1, 2, 3]
-    //
-    //[1, 2, 3, 3, 3, 4, 5, 5, 5, 6, 7] [1, 2, 3, 4, 5, 6, 7]
-    //
-    //[1, 2, 3, 4, 5, 5, 5, 5, 5] [1, 2, 3, 4, 5]
+    
+    e = [1, 2, 3]
+    f = [1, 2, 3]
+    eList = arrayToList(e)
+    noDupEList = removeDuplicates(head: eList)
+    noDupE = listToArray(noDupEList)
+    assert(noDupE == f)
+    
+    e = [1, 2, 3, 3, 3, 4, 5, 5, 5, 6, 7]
+    f = [1, 2, 3, 4, 5, 6, 7]
+    eList = arrayToList(e)
+    noDupEList = removeDuplicates(head: eList)
+    noDupE = listToArray(noDupEList)
+    assert(noDupE == f)
+    
+    e = [1, 2, 3, 4, 5, 5, 5, 5, 5]
+    f = [1, 2, 3, 4, 5]
+    eList = arrayToList(e)
+    noDupEList = removeDuplicates(head: eList)
+    noDupE = listToArray(noDupEList)
+    assert(noDupE == f)
+    
+    print("passed!")
 }
 
 testRemoveDuplicates()
