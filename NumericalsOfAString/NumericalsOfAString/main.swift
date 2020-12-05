@@ -16,6 +16,7 @@ func numericals(_ str: String) -> String {
         result += "\(letterDict[letter]!)"
     }
     /*
+//     original solution:
     for letter in str {
         if letterDict.keys.contains(letter) {
 //            increment by 1, add new number to result string
