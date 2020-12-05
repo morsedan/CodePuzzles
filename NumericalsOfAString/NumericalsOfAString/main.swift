@@ -9,20 +9,25 @@
 import Foundation
 
 func numericals(_ str: String) -> String {
-    var letterDict: [String: Int] = [:]
+    var letterDict: [Character: Int] = [:]
     var result =  ""
-    
+    str.forEach { letter in
+        letterDict[letter, default: 0] += 1
+        result += "\(letterDict[letter]!)"
+    }
+    /*
     for letter in str {
-        if letterDict.keys.contains(String(letter)) {
+        if letterDict.keys.contains(letter) {
 //            increment by 1, add new number to result string
-            letterDict[String(letter)]! += 1
-            result += "\(letterDict[String(letter)]!)"
+            letterDict[letter]! += 1
+            result += "\(letterDict[letter]!)"
         } else {
 //            put it in, with default of 1, add 1 to result string
-            letterDict[String(letter)] = 1
+            letterDict[letter] = 1
             result += "1"
         }
     }
+    */
     return result
 }
 
