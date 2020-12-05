@@ -9,6 +9,14 @@
 import Foundation
 
 func numericals(_ str: String) -> String {
+//    popular/clever solution:
+    var counter: [Character: Int] = [:]
+    return str.map {
+        counter[$0, default: 0] += 1
+        return String(counter[$0]!)
+    }.joined()
+    /*
+//    refactored solution:
     var letterDict: [Character: Int] = [:]
     var result =  ""
     str.forEach { letter in
@@ -30,6 +38,7 @@ func numericals(_ str: String) -> String {
     }
     */
     return result
+    */
 }
 
 func testBasics() {
