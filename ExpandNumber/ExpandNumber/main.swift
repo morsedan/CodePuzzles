@@ -44,6 +44,7 @@ func expand1(_ num: Int) -> String {
 
 func expand(_ num: Int) -> String {
     guard num > -1 else { return "Negative numbers cannot be expanded." }
+    guard num != 0 else { return "" }
     var shrinkingNumber = num
     var digits = [String]()
     var position = 0
@@ -67,11 +68,26 @@ func expand(_ num: Int) -> String {
         zeroes += "0"
     }
     digits.append("\(shrinkingNumber)\(zeroes)")
+    
     return digits.reversed().joined(separator: " + ")
 }
 
+func expandx(_ num: Int) -> String {
+    guard num > -1 else { return "Negative numbers cannot be expanded." }
+    
+    let digits = String(num)
+    let maxZeros = digits.count - 1
+    
+    let parts = digits
+        .enumerated()
+        .filter { $0.element != "0" }
+        .map { String($0.element) + String(repeating: "0", count: maxZeros - $0.offset) }
+    
+    return parts.joined(separator: " + ")
+}
+
 func testExpand() {
-//    assert(expand(0) == "")
+    assert(expand(0) == "")
     assert(expand(-100) == "Negative numbers cannot be expanded.")
     assert(expand(25) == "20 + 5")
     assert(expand(325) == "300 + 20 + 5")
