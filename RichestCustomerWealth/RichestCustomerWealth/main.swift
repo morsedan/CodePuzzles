@@ -10,8 +10,11 @@ import Foundation
 
 class Solution {
     func maximumWealth(_ accounts: [[Int]]) -> Int {
-        return accounts.sorted { $0.reduce(0, +) < $1.reduce(0, +) }.last!.reduce(0, +)
+        return accounts.reduce(0, { max($0, $1.reduce(0, +)) })
     }
+//    func maximumWealth(_ accounts: [[Int]]) -> Int {
+//        return accounts.sorted { $0.reduce(0, +) < $1.reduce(0, +) }.last!.reduce(0, +)
+//    }
 }
 var accounts = [[1,2,3],[3,2,1]]
 let s = Solution()
