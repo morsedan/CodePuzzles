@@ -8,25 +8,25 @@
 import Foundation
 
 func countBits(_ n: Int) -> Int {
-    var binary = [0]
+    var binary = 0
     var ones = 0
     var currentPlace = 1
     var number = n
     
     while currentPlace * 2 <= number {
         currentPlace *= 2
-        binary.append(0)
+        binary += 1
     }
     
-    for i in 0..<binary.count {
+    for _ in 0...binary {
         if number >= currentPlace {
-            binary[i] = 1
+            ones += 1
             number -= currentPlace
         }
         currentPlace /= 2
     }
     
-    return binary.filter { $0 == 1 }.count
+    return ones
 }
 
 func test() {
