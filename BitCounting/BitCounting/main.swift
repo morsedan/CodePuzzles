@@ -8,25 +8,26 @@
 import Foundation
 
 func countBits(_ n: Int) -> Int {
-    var places = 0
-    var ones = 0
-    var currentPlace = 1
-    var number = n
-    
-    while currentPlace * 2 <= number {
-        currentPlace *= 2
-        places += 1
-    }
-    
-    for _ in 0...places {
-        if number >= currentPlace {
-            ones += 1
-            number -= currentPlace
-        }
-        currentPlace /= 2
-    }
-    
-    return ones
+//    var places = 0
+//    var ones = 0
+//    var currentPlace = 1
+//    var number = n
+//
+//    while currentPlace * 2 <= number {
+//        currentPlace *= 2
+//        places += 1
+//    }
+//
+//    for _ in 0...places {
+//        if number >= currentPlace {
+//            ones += 1
+//            number -= currentPlace
+//        }
+//        currentPlace /= 2
+//    }
+//
+//    return ones
+    return n.nonzeroBitCount
 }
 
 func test() {
