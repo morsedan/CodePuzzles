@@ -7,7 +7,7 @@
 
 import Foundation
 
-func disemvowel(_ s: String) -> String {
+func disemvowel2(_ s: String) -> String {
     var result = ""
     for letter in s {
         if !["a", "e", "i", "o", "u"].contains(letter.lowercased()) {
@@ -15,6 +15,11 @@ func disemvowel(_ s: String) -> String {
         }
     }
     return result
+}
+
+func disemvowel(_ s: String) -> String {
+    let vowels = ["a", "e", "i", "o", "u"]
+    return s.filter { !vowels.contains($0.lowercased()) }
 }
 
 func test() {
