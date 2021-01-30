@@ -7,7 +7,7 @@
 
 import Foundation
 
-func wave(_ y: String) -> [String] {
+func wave1(_ y: String) -> [String] {
     var result: [String] = []
     
     var characters: [String] = []
@@ -24,6 +24,16 @@ func wave(_ y: String) -> [String] {
     }
     
     return result
+}
+
+func wave(_ y: String) -> [String] {
+    var wave = [String]()
+    for i in y.indices {
+        if !y[i].isWhitespace {
+            wave.append(y[..<i] + y[i].uppercased() + y[y.index(after: i)...])
+        }
+    }
+    return wave
 }
 
 func test() {
