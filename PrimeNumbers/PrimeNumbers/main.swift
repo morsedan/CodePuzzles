@@ -17,7 +17,7 @@ extension Int {
         if primes.contains(self) {
             return true
         } else {
-            for number in 2...self / 2 {
+            for number in 2...Int(Double(self).squareRoot()) {
                 if self % number == 0 {
                     return false
                 }
@@ -30,7 +30,7 @@ extension Int {
 
 func getPrimes(from start: Int, to end: Int) -> [Int] {
     var result: [Int] = []
-    var numbers = start > end ? end...start : start...end
+    let numbers = start > end ? end...start : start...end
 
     for number in numbers {
         if number.isPrime() {
