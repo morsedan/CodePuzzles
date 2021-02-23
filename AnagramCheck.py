@@ -22,25 +22,60 @@ Fill out your solution below:
 
 def anagram(s1, s2):
     """
-    O(n)
+    Solution 2, O(n)
     """
-    letter_dict = {}
-    for character in s1.lower().replace(' ', ''):
-        if character not in letter_dict:
-            letter_dict[character] = 1
-        else:
-            letter_dict[character] += 1
-    for character in s2.lower().replace(' ', ''):
-        if character not in letter_dict or letter_dict[character] == 0:
-            return False
-        else:
-            letter_dict[character] -= 1
+    s1 = s1.replace(' ', '').lower()
+    s2 = s2.replace(' ', '').lower()
+    
+    if len(s1) != len(s2):
+        return False
 
-    for item in letter_dict:
-        if letter_dict[item] != 0:
+    count = {}
+
+    for letter in s1:
+        if letter in count:
+            count[letter] += 1
+        else:
+            count[letter] = 1
+
+    for letter in s2:
+        if letter in count:
+            count[letter] -= 1
+        else:
+            count[letter] = 1
+
+    for k in count:
+        if count[k] != 0:
             return False
 
     return True
+    """
+    solution 1, O(n log n)
+    """
+    # s1 = s1.replace(' ', '').lower()
+    # s2 = s2.replace(' ', '').lower()
+    #
+    # return sorted(s1) == sorted(s2)
+    """
+    O(n)
+    """
+    # letter_dict = {}
+    # for character in s1.lower().replace(' ', ''):
+    #     if character not in letter_dict:
+    #         letter_dict[character] = 1
+    #     else:
+    #         letter_dict[character] += 1
+    # for character in s2.lower().replace(' ', ''):
+    #     if character not in letter_dict or letter_dict[character] == 0:
+    #         return False
+    #     else:
+    #         letter_dict[character] -= 1
+    #
+    # for item in letter_dict:
+    #     if letter_dict[item] != 0:
+    #         return False
+    #
+    # return True
     """
     O(n^^2)
     """
