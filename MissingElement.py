@@ -1,6 +1,3 @@
-T = TestFinder()
-
-
 def finder(arr1, arr2):
     pass
 
@@ -21,5 +18,5 @@ class TestFinder(unittest.TestCase):
 
 
 # Run test
-t = T
+t = TestFinder()
 t.test(finder)
