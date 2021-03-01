@@ -2,7 +2,10 @@
 
 Anagram Check
 Problem
-Given two strings, check to see if they are anagrams. An anagram is when the two strings can be written using the exact same letters (so you can just rearrange the letters to get a different phrase or word).
+Given two strings, check to see if they are anagrams.
+An anagram is when the two strings can be written using
+the exact same letters (so you can just rearrange the
+letters to get a different phrase or word).
 
 For example:
 
@@ -10,14 +13,23 @@ For example:
 
 "clint eastwood" is an anagram of "old west action"
 
-Note: Ignore spaces and capitalization. So "d go" is an anagram of "God" and "dog" and "o d g".
+Note: Ignore spaces and capitalization. So "d go"
+is an anagram of "God" and "dog" and "o d g".
 
 Solution
 Fill out your solution below:
 """
 
 def anagram(s1, s2):
-    pass
+    for character in s1.lower().replace(" ", ""):
+        if character in s2.lower():
+            for index, letter in enumerate(s2.lower().replace(" ", "")):
+                if letter == character:
+                    s2 = s2[:index] + s2[index + 1:]
+                    break
+        else:
+            return False
+    return True
 
 import unittest
 
