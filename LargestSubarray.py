@@ -1,6 +1,6 @@
 def large_cont_sum(arr):
     if arr == []:
-        return []
+        return 0
 
     largest_sum = arr[0]
     largest_start = 0
@@ -40,7 +40,7 @@ class LargeContTest(unittest.TestCase):
         self.assertEqual(sol([1, 2, -1, 3, 4, 10, 10, -10, -1]), 29)
         self.assertEqual(sol([1, 2, -1, 3, -100, 4, 10, 10, -10, -1]), 24)
         self.assertEqual(sol([-1, 1]), 1)
-        self.assertEqual(sol([-1, -2, -3, -4]), 1)
+        self.assertEqual(sol([-1, -2, 1, -4]), 1)
         print('ALL TEST CASES PASSED')
 
 
