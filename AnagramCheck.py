@@ -21,15 +21,38 @@ Fill out your solution below:
 """
 
 def anagram(s1, s2):
-    for character in s1.lower().replace(" ", ""):
-        if character in s2.lower():
-            for index, letter in enumerate(s2.lower().replace(" ", "")):
-                if letter == character:
-                    s2 = s2[:index] + s2[index + 1:]
-                    break
+    """
+    O(n)
+    """
+    letter_dict = {}
+    for character in s1.lower().replace(' ', ''):
+        if character not in letter_dict:
+            letter_dict[character] = 1
         else:
+            letter_dict[character] += 1
+    for character in s2.lower().replace(' ', ''):
+        if character not in letter_dict or letter_dict[character] == 0:
             return False
+        else:
+            letter_dict[character] -= 1
+
+    for item in letter_dict:
+        if letter_dict[item] != 0:
+            return False
+
     return True
+    """
+    O(n^^2)
+    """
+    # for character in s1.lower().replace(" ", ""):
+    #     if character in s2.lower():
+    #         for index, letter in enumerate(s2.lower().replace(" ", "")):
+    #             if letter == character:
+    #                 s2 = s2[:index] + s2[index + 1:]
+    #                 break
+    #     else:
+    #         return False
+    # return True
 
 import unittest
 
