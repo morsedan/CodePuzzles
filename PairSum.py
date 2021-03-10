@@ -28,19 +28,16 @@ def pair_sum(arr, k):
             num_dict[number] = 1
 
     for number in arr:
-        if k - number in num_dict:
-            if number not in num_dict:
-                continue
-
+        if k - number in num_dict and number in num_dict:
             if num_dict[number] >= 1:
                 num_dict[number] -= 1
-            if num_dict[number] == 0:
-                del num_dict[number]
+                if num_dict[number] == 0:
+                    del num_dict[number]
 
             if num_dict[k - number] >= 1:
                 num_dict[k  - number] -= 1
-            if num_dict[k  - number] == 0:
-                del num_dict[k  - number]
+                if num_dict[k  - number] == 0:
+                    del num_dict[k  - number]
             result.append((number, k-number))
 
     return len(result)
