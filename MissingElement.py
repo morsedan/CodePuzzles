@@ -1,4 +1,6 @@
-def finder(arr1, arr2):
+import collections
+
+def finder1(arr1, arr2):
     elementDict1 = {}
     elementDict2 = {}
 
@@ -21,6 +23,18 @@ def finder(arr1, arr2):
             return item
 
     return -1
+
+def finder(arr1, arr2):
+    d = collections.defaultdict(int)
+
+    for num in arr2:
+        d[num] += 1
+
+    for num in arr1:
+        if d[num] == 0:
+            return num
+        else:
+            d[num] -= 1
 
 
 
