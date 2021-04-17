@@ -1,4 +1,4 @@
-def narcissistic(value):
+def narcissistic2(value):
     working_value = value
     digits = []
     total = 0
@@ -13,6 +13,9 @@ def narcissistic(value):
             return False
 
     return total == value
+
+def narcissistic(value):
+    return value == sum(int(x) ** len(str(value)) for x in str(value))
 
 assert(narcissistic(7) == True)
 assert(narcissistic(371) == True)
