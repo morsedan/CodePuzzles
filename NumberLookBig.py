@@ -2,12 +2,15 @@ def narcissistic(value):
     working_value = value
     digits = []
     total = 0
+
     while working_value > 0:
         digits.append(working_value % 10)
         working_value //= 10
-    power = len(digits)
+
     for digit in digits:
-        total += digit ** power
+        total += digit ** len(digits)
+        if total > value:
+            return False
 
     return total == value
 
