@@ -1,5 +1,7 @@
 //  [SubrectangleQueries](https://leetcode.com/problems/subrectangle-queries/)
 
+import Darwin
+
 class SubrectangleQueries {
     var rectangle: [[Int]]
 
@@ -32,34 +34,43 @@ class SubrectangleQueries {
     }
 }
 
-var rectangle = [[1,2,1],[4,3,4],[3,2,1],[1,1,1]]
-var obj = SubrectangleQueries(rectangle)
+let nums = [0, 0, 0, 0, 2, 0, 1, 1, 9]
+var divisor = Int(pow(10.0, Double(nums.count)))
+var result = 0
+for num in nums {
+    divisor /= 10
+    result += num * divisor
+}
+print(result)
 
-obj.printRectangle()
-assert(obj.getValue(0, 2) == 1)
-obj.updateSubrectangle(0, 0, 3, 2, 5)
-obj.printRectangle()
-assert(obj.getValue(0, 2) == 5)
-assert(obj.getValue(3, 1) == 5)
-obj.updateSubrectangle(3, 0, 3, 2, 10)
-assert(obj.getValue(3, 1) == 10)
-assert(obj.getValue(0, 2) == 5)
-obj.printRectangle()
-
-rectangle = [[1,1,1],[2,2,2],[3,3,3]]
-obj = SubrectangleQueries(rectangle)
-
-obj.printRectangle()
-assert(obj.getValue(0, 0) == 1)
-obj.updateSubrectangle(0, 0, 2, 2, 100)
-obj.printRectangle()
-assert(obj.getValue(0, 0) == 100)
-assert(obj.getValue(2, 2) == 100)
-obj.updateSubrectangle(1, 1, 2, 2, 20)
-assert(obj.getValue(2, 2) == 20)
-obj.printRectangle()
-
-print("Tests passed!")
+//var rectangle = [[1,2,1],[4,3,4],[3,2,1],[1,1,1]]
+//var obj = SubrectangleQueries(rectangle)
+//
+//obj.printRectangle()
+//assert(obj.getValue(0, 2) == 1)
+//obj.updateSubrectangle(0, 0, 3, 2, 5)
+//obj.printRectangle()
+//assert(obj.getValue(0, 2) == 5)
+//assert(obj.getValue(3, 1) == 5)
+//obj.updateSubrectangle(3, 0, 3, 2, 10)
+//assert(obj.getValue(3, 1) == 10)
+//assert(obj.getValue(0, 2) == 5)
+//obj.printRectangle()
+//
+//rectangle = [[1,1,1],[2,2,2],[3,3,3]]
+//obj = SubrectangleQueries(rectangle)
+//
+//obj.printRectangle()
+//assert(obj.getValue(0, 0) == 1)
+//obj.updateSubrectangle(0, 0, 2, 2, 100)
+//obj.printRectangle()
+//assert(obj.getValue(0, 0) == 100)
+//assert(obj.getValue(2, 2) == 100)
+//obj.updateSubrectangle(1, 1, 2, 2, 20)
+//assert(obj.getValue(2, 2) == 20)
+//obj.printRectangle()
+//
+//print("Tests passed!")
 /*
  ["SubrectangleQueries","getValue","updateSubrectangle","getValue","getValue","updateSubrectangle","getValue","getValue"]
  [[[[1,2,1],[4,3,4],[3,2,1],[1,1,1]]],[0,2],
