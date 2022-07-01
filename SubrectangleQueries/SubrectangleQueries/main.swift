@@ -34,43 +34,47 @@ class SubrectangleQueries {
     }
 }
 
-let nums = [0, 0, 0, 0, 2, 0, 1, 1, 9]
-var divisor = Int(pow(10.0, Double(nums.count)))
-var result = 0
-for num in nums {
-    divisor /= 10
-    result += num * divisor
-}
-print(result)
+//let nums = [0, 0, 0, 0, 2, 0, 1, 1, 9]
+//var divisor = Int(pow(10.0, Double(nums.count)))
+//var result = 0
+//for num in nums {
+//    divisor /= 10
+//    result += num * divisor
+//}
+//print(result)
 
-//var rectangle = [[1,2,1],[4,3,4],[3,2,1],[1,1,1]]
-//var obj = SubrectangleQueries(rectangle)
-//
-//obj.printRectangle()
-//assert(obj.getValue(0, 2) == 1)
-//obj.updateSubrectangle(0, 0, 3, 2, 5)
-//obj.printRectangle()
-//assert(obj.getValue(0, 2) == 5)
-//assert(obj.getValue(3, 1) == 5)
-//obj.updateSubrectangle(3, 0, 3, 2, 10)
-//assert(obj.getValue(3, 1) == 10)
-//assert(obj.getValue(0, 2) == 5)
-//obj.printRectangle()
-//
-//rectangle = [[1,1,1],[2,2,2],[3,3,3]]
-//obj = SubrectangleQueries(rectangle)
-//
-//obj.printRectangle()
-//assert(obj.getValue(0, 0) == 1)
-//obj.updateSubrectangle(0, 0, 2, 2, 100)
-//obj.printRectangle()
-//assert(obj.getValue(0, 0) == 100)
-//assert(obj.getValue(2, 2) == 100)
-//obj.updateSubrectangle(1, 1, 2, 2, 20)
-//assert(obj.getValue(2, 2) == 20)
-//obj.printRectangle()
-//
-//print("Tests passed!")
+var rectangle = [
+    [1, 2, 1],
+    [4, 3, 4],
+    [3, 2, 1],
+    [1, 1, 1]]
+var obj = SubrectangleQueries(rectangle)
+
+obj.printRectangle()
+assert(obj.getValue(0, 2) == 1)
+obj.updateSubrectangle(0, 0, 3, 2, 5)
+obj.printRectangle()
+assert(obj.getValue(0, 2) == 5)
+assert(obj.getValue(3, 1) == 5)
+obj.updateSubrectangle(3, 0, 3, 2, 10)
+assert(obj.getValue(3, 1) == 10)
+assert(obj.getValue(0, 2) == 5)
+obj.printRectangle()
+
+rectangle = [[1,1,1],[2,2,2],[3,3,3]]
+obj = SubrectangleQueries(rectangle)
+
+obj.printRectangle()
+assert(obj.getValue(0, 0) == 1)
+obj.updateSubrectangle(0, 0, 2, 2, 100)
+obj.printRectangle()
+assert(obj.getValue(0, 0) == 100)
+assert(obj.getValue(2, 2) == 100)
+obj.updateSubrectangle(1, 1, 2, 2, 20)
+assert(obj.getValue(2, 2) == 20)
+obj.printRectangle()
+
+print("Tests passed!")
 /*
  ["SubrectangleQueries","getValue","updateSubrectangle","getValue","getValue","updateSubrectangle","getValue","getValue"]
  [[[[1,2,1],[4,3,4],[3,2,1],[1,1,1]]],[0,2],
@@ -116,3 +120,81 @@ print(result)
  subrectangleQueries.updateSubrectangle(1, 1, 2, 2, 20);
  subrectangleQueries.getValue(2, 2); // return 20
  */
+
+/*
+ ["SubrectangleQueries","getValue","updateSubrectangle","getValue","getValue","updateSubrectangle","getValue","getValue"]
+ 
+ "SubrectangleQueries"
+ [
+ [1,2,1],
+ [4,3,4],
+ [3,2,1],
+ [1,1,1]
+ ]
+ 
+ "getValue" [0,2]
+ returns 1
+ 
+ "updateSubrectangle"
+ [0,0,3,2,5]
+ changes rect to
+ [
+ [5,5,5],
+ [5,5,5],
+ [5,5,5],
+ [5,5,5]
+ ]
+ 
+ get value [0,2]
+ 5
+ 
+ [3,1]
+ 5
+ 
+ update subrectangle
+ [3,0,3,2,10]
+ [
+ [5, 5, 5],
+ [5, 5, 5],
+ [5, 5, 5],
+ [10,10,10]
+ ]
+ 
+ getValue [3,1]
+ 10
+ 
+ getValue [0,2]
+ 5
+ */
+
+
+/*
+ 1, 2, 3, 4, 5, 6, 7, 8, 9
+ oddOrEven(3) return "either"
+ oddOrEven(4) return "even"
+ oddOrEven(6) return "odd"
+ 
+ 
+ 
+ func oddOrEven(num)
+ */
+
+
+func oddOrEven(number: Int) -> String {
+    let result = number % 4
+    
+    if result == 0 {
+        return "even"
+    }
+    
+    if result == 2 {
+        return "odd"
+    }
+    
+    return "either"
+}
+
+//
+//for i in 1...50 {
+//    print(oddOrEven(number: i))
+//}
