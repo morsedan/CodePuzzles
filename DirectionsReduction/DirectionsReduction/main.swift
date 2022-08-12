@@ -97,3 +97,6 @@ assert(dirReduc(directions) == ["EAST", "NORTH"])
 directions = ["NORTH", "WEST", "SOUTH", "EAST"]
 assert(dirReduc(directions) == ["NORTH", "WEST", "SOUTH", "EAST"])
 print("Tests passed!")
+
+let thing = "hi"
+print(thing == nil)
